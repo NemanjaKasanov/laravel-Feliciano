@@ -6,13 +6,13 @@
 <body>
 
 <!-- Navigation -->
-{{--@include('fixed.navigation')--}}
+@include('fixed.nav')
 
 <!-- Page Content -->
 @yield('content')
 
 <!-- Footer -->
-{{--@include('fixed.footer')--}}
+@include('fixed.footer')
 
 <!-- Bootstrap core JavaScript -->
 @include('fixed.scripts')
