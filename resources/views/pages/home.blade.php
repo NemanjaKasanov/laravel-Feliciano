@@ -55,7 +55,6 @@
         </div>
     </section>
 
-
     <section class="ftco-section ftco-wrap-about">
         <div class="container">
             <div class="row">
@@ -77,7 +76,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="ftco-section ftco-counter img ftco-no-pt" id="section-counter">
         <div class="container">
@@ -180,74 +178,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="staff">
-                        <div class="img" style="background-image: url({{ asset('assets/img/chef-1.jpg') }});"></div>
-                        <div class="text pt-4">
-                            <h3>John Smooth</h3>
-                            <span class="position mb-2">Restaurant Owner</span>
-                            <div class="faded">
-                                <ul class="ftco-social d-flex">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                </ul>
+                @foreach($chefs as $el)
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="staff">
+                            <div class="img" style="background-image: url({{ asset('assets/img/'.$el->image) }});"></div>
+                            <div class="text pt-4">
+                                <h3>{{ $el->name }}</h3>
+                                <span class="position mb-2">{{ $el->title }}</span>
+                                <div class="faded">
+                                    <ul class="ftco-social d-flex">
+                                        @foreach($links as $el)
+                                            @if($el->image)
+                                                <li class="ftco-animate"><a href="{{ $el->href }}" target="_blank"><span class="{{ $el->image }}"></span></a></li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="staff">
-                        <div class="img" style="background-image: url({{ asset('assets/img/chef-2.jpg') }});"></div>
-                        <div class="text pt-4">
-                            <h3>Rebeca Welson</h3>
-                            <span class="position mb-2">Head Chef</span>
-                            <div class="faded">
-                                <ul class="ftco-social d-flex">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="staff">
-                        <div class="img" style="background-image: url({{ asset('assets/img/chef-3.jpg') }});"></div>
-                        <div class="text pt-4">
-                            <h3>Kharl Branyt</h3>
-                            <span class="position mb-2">Chef</span>
-                            <div class="faded">
-                                <ul class="ftco-social d-flex">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="staff">
-                        <div class="img" style="background-image: url({{ asset('assets/img/chef-4.jpg') }});"></div>
-                        <div class="text pt-4">
-                            <h3>Luke Simon</h3>
-                            <span class="position mb-2">Chef</span>
-                            <div class="faded">
-                                <ul class="ftco-social d-flex">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -331,62 +281,22 @@
             <div class="row ftco-animate justify-content-center">
                 <div class="col-md-12">
                     <div class="carousel-testimony owl-carousel ftco-owl">
-                        <div class="item">
-                            <div class="testimony-wrap text-center pb-5">
-                                <div class="user-img mb-4" style="background-image: url({{ asset('assets/img/person_1.jpg') }})">
-                                    <span class="quote d-flex align-items-center justify-content-center">
-                                      <i class="icon-quote-left"></i>
-                                    </span>
-                                </div>
-                                <div class="text p-3">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Jason McClean</p>
-                                    <span class="position">Customer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap text-center pb-5">
-                                <div class="user-img mb-4" style="background-image: url({{ asset('assets/img/person_2.jpg') }})">
-                                    <span class="quote d-flex align-items-center justify-content-center">
-                                      <i class="icon-quote-left"></i>
-                                    </span>
-                                </div>
-                                <div class="text p-3">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Mark Stevenson</p>
-                                    <span class="position">Customer</span>
+                        @foreach($testimonies as $el)
+                            <div class="item">
+                                <div class="testimony-wrap text-center pb-5">
+                                    <div class="user-img mb-4" style="background-image: url({{ asset('assets/img/'.$el->image) }})">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                          <i class="icon-quote-left"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text p-3">
+                                        <p class="name">{{ $el->name }}</p>
+                                        <span class="position">{{ $el->role }}</span>
+                                        <p class="mb-4">{{ $el->content }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap text-center pb-5">
-                                <div class="user-img mb-4" style="background-image: url({{ asset('assets/img/person_3.jpg') }})">
-                                    <span class="quote d-flex align-items-center justify-content-center">
-                                      <i class="icon-quote-left"></i>
-                                    </span>
-                                </div>
-                                <div class="text p-3">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Art Leonard</p>
-                                    <span class="position">Customer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap text-center pb-5">
-                                <div class="user-img mb-4" style="background-image: url({{ asset('assets/img/person_4.jpg') }})">
-                                    <span class="quote d-flex align-items-center justify-content-center">
-                                      <i class="icon-quote-left"></i>
-                                    </span>
-                                </div>
-                                <div class="text p-3">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Rose Henderson</p>
-                                    <span class="position">Customer</span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
