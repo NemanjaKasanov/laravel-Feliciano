@@ -42,6 +42,7 @@
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">Home Delivery</h2>
                     <p>We provide fast and easy home delivery for everyone. Just fill in the form and your order will be on it's way to you.</p>
+                    <p>We deliver only in Belgrade, Serbia.</p>
                 </div>
             </div>
         </div>

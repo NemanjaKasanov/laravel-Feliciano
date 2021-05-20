@@ -23,17 +23,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">Feliciano</a>
+        @if(session()->has('user'))
+            <span> | {{ session()->get('user')->name }} {{ session()->get('user')->last_name }}</span>
+        @endif
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-                @foreach($navs as $nav)
-                    <li class="nav-item"><a href="{{ route($nav->href) }}" class="nav-link">{{ $nav->name }}</a></li>
-                @endforeach
-                <li class="nav-item cta"><a href="reservation.html" class="nav-link">Your Shopping Bag</a></li>
-            </ul>
+                <ul class="navbar-nav ml-auto">
+                    @foreach($navs as $nav)
+                        <li class="nav-item"><a href="{{ route($nav->href) }}" class="nav-link">{{ $nav->name }}</a></li>
+                    @endforeach
+
+                    @if(session()->has('user'))
+                        <li class="nav-item cta">
+                                @csrf
+                                <a href="{{ route("order") }}" class="nav-link">Your Order (<span id="orderItemsNumber">0</span>)</a>
+                        </li>
+                    @else
+                        <li class="nav-item cta"><a href="#" class="nav-link disabled">Feliciano</a></li>
+                    @endif
+                </ul>
         </div>
     </div>
 </nav>
