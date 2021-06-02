@@ -36,6 +36,8 @@ Route::middleware(['web'])->group(function(){
         Route::post('/change_account_info', [AuthController::class, 'changeAccountInfo'])->name('changeAccountInfo');
         Route::get('/order', [OrderController::class, 'order'])->name('order');
         Route::delete('/delete_selected_order', [OrderController::class, 'deleteSelectedOrder'])->name('deleteSelectedOrder');
+        Route::post('/submit_order', [OrderController::class, 'submitOrder'])->name('submitOrder');
+        Route::get('/order_submit_success', [OrderController::class, 'submitOrderSuccess'])->name('submitOrderSuccess');
 
         Route::middleware(['employee'])->group(function(){
             Route::get('/change_product/{product}', [DishController::class, 'changeProductForm'])->name('changeProduct.form');
@@ -45,6 +47,7 @@ Route::middleware(['web'])->group(function(){
             Route::post('/add_product', [DishController::class, 'addProduct'])->name('addProduct');
             Route::post('/add_price', [DishController::class, 'addPrice'])->name('addPrice');
             Route::delete('/delete_price', [DishController::class, 'deletePrice'])->name('deletePrice');
+            Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
         });
     });
 

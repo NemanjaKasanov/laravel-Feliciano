@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CartExtra;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderExtra;
@@ -13,15 +14,30 @@ class OrderController extends FirstController
     public $userId;
     public function __construct(Request $request){
         parent::__construct($request);
-        $this->userId = $request->session()->get('user')->id;
+        if($request->session()->has('user'))
+            $this->userId = $request->session()->get('user')->id;
     }
 
     public function order(){
         $this->data['cart_products'] = Cart::where('user', $this->userId)->with('productObj', 'priceObj', 'extras')->get();
         $this->data['total'] = 0;
         foreach($this->data['cart_products'] as $el) $this->data['total'] += $el->priceObj->price;
-//        dd($this->data['cart_products']);
         return view('pages.order', $this->data);
+    }
+
+    public function submitOrderSuccess(){
+        return view('pages.order_submitted', $this->data);
+    }
+
+    public function orders(){
+        $this->data['orders'] = Order::where('active', '1')->orderBy('time', 'DESC')->with('user', 'products')->get();
+        $this->data['products'] = OrderProduct::with('product', 'price', 'order', 'extras')->get();
+
+
+
+
+        dd($this->data['products']);
+        return view('pages.orders', $this->data);
     }
 
     public function insertIntoCart(Request $request){
@@ -61,5 +77,42 @@ class OrderController extends FirstController
         Cart::where('id', $request->id)->delete();
         CartExtra::where('cart', $request->id)->delete();
         return redirect()->route('order');
+    }
+
+    public function submitOrder(Request $request){
+        $user = $request->session()->get('user')->id;
+        $orders = Cart::where('user', $this->userId)->with('productObj', 'priceObj', 'extras')->get();
+
+        if(count($orders) < 1) return redirect()->route('order');
+
+        try{
+            $order_id = Order::insertGetId(['user' => $user]);
+            foreach($orders as $el){
+                $product_id = OrderProduct::insertGetId([
+                    'order' => $order_id,
+                    'product' => $el->product,
+                    'price' => $el->price
+                ]);
+                foreach($el->extras as $extra){
+                    OrderExtra::insert([
+                        'order' => $product_id,
+                        'extra' => $extra->id
+                    ]);
+                }
+            }
+
+            $carts = Cart::where('user', $this->userId)->get();
+            foreach($carts as $el){
+                foreach($el->extras as $x){
+                    CartExtra::where('cart', $el->id)->delete();
+                }
+                Cart::where('id', $el->id)->delete();
+            }
+
+            return redirect()->route('submitOrderSuccess');
+        }
+        catch (\Exception $e){
+            return redirect()->route('error');
+        }
     }
 }

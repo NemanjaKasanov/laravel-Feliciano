@@ -9,4 +9,7 @@ class OrderExtra extends Model
 {
     use HasFactory;
 
+    public function extras(){
+        return $this->hasMany(Extra::class, 'id', 'extra');
+    }
 }

@@ -61,7 +61,8 @@
                     <div class="col-12 pt-5 d-flex flex-wrap">
                         <div class="col-lg-6 col-sm-12">
                             <p class="h3 mb-4">Total Price: <span class="font-weight-bold">{{ $total }}&euro;</span></p>
-                            <form action="#" method="POST">
+                            <form action="{{ route('submitOrder') }}" method="POST">
+                                @csrf
                                 @if(count($cart_products) > 0)
                                     <div class="form-group">
                                         <input type="submit" name="submit" value="Submit Order" class="btn btn-primary py-3 px-5">
@@ -74,8 +75,7 @@
                             </form>
                         </div>
                         <div class="col-lg-6 col-sm-12">
-                            <p>Your order will be processed and dispached as soon as it is ready (based on the "time to make" of each meal) and will arrive on your door within 30 minutes after that.</p>
-                            <p>Payment is given to the delivery man.</p>
+                            @include('partials.order_delivery_info')
                         </div>
                     </div>
                 </div>
