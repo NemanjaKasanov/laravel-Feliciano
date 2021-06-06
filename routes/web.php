@@ -48,6 +48,7 @@ Route::middleware(['web'])->group(function(){
             Route::post('/add_price', [DishController::class, 'addPrice'])->name('addPrice');
             Route::delete('/delete_price', [DishController::class, 'deletePrice'])->name('deletePrice');
             Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
+            Route::post('shipOrRefuse', [OrderController::class, 'shipOrRefuseOrder'])->name('shipOrRefuse');
         });
     });
 

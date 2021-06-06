@@ -9,11 +9,11 @@ class OrderProduct extends Model
 {
     use HasFactory;
 
-    public function product(){
+    public function product_data(){
         return $this->hasOne(Product::class, 'id', 'product');
     }
 
-    public function price(){
+    public function price_data(){
         return $this->hasOne(Price::class, 'id', 'price');
     }
 
@@ -22,6 +22,13 @@ class OrderProduct extends Model
     }
 
     public function extras(){
-        return $this->hasMany(OrderExtra::class, 'order', 'id');
+        return $this->hasManyThrough(
+            Extra::class,
+            OrderExtra::class,
+            'order',
+            'id',
+            'id',
+            'extra'
+        );
     }
 }

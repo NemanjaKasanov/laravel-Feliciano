@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function user(){
+    public function order_user(){
         return $this->hasOne(Account::class, 'id', 'user');
     }
 

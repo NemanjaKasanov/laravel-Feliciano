@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderExtra;
 use App\Models\Cart;
+use App\Models\Extra;
 
 class OrderController extends FirstController
 {
@@ -30,13 +31,8 @@ class OrderController extends FirstController
     }
 
     public function orders(){
-        $this->data['orders'] = Order::where('active', '1')->orderBy('time', 'DESC')->with('user', 'products')->get();
-        $this->data['products'] = OrderProduct::with('product', 'price', 'order', 'extras')->get();
-
-
-
-
-        dd($this->data['products']);
+        $this->data['orders'] = Order::where('active', '1')->orderBy('time', 'DESC')->with('order_user', 'products')->get();
+        $this->data['products'] = OrderProduct::with('product_data', 'price_data', 'order', 'extras')->get();
         return view('pages.orders', $this->data);
     }
 
@@ -112,6 +108,20 @@ class OrderController extends FirstController
             return redirect()->route('submitOrderSuccess');
         }
         catch (\Exception $e){
+            return redirect()->route('error');
+        }
+    }
+
+    public function shipOrRefuseOrder(Request $request){
+        if($request->submit == 1){
+            Order::where('id', $request->order)->update(['active' => 0]);
+            return redirect()->route('orders');
+        }
+        else if($request->submit == 2){
+            Order::where('id', $request->order)->delete();
+            return redirect()->route('orders');
+        }
+        else{
             return redirect()->route('error');
         }
     }
