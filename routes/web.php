@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,10 @@ Route::middleware(['web'])->group(function(){
             Route::delete('/delete_price', [DishController::class, 'deletePrice'])->name('deletePrice');
             Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
             Route::post('shipOrRefuse', [OrderController::class, 'shipOrRefuseOrder'])->name('shipOrRefuse');
+
+            Route::middleware(['admin'])->group(function(){
+                Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+            });
         });
     });
 
