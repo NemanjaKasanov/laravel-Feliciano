@@ -31,4 +31,8 @@ class OrderProduct extends Model
             'extra'
         );
     }
+
+    public function order_data(){
+        return $this->hasOne(Order::class, 'id', 'order');
+    }
 }

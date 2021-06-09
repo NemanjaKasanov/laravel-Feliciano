@@ -53,15 +53,24 @@ Route::middleware(['web'])->group(function(){
 
             Route::middleware(['admin'])->group(function(){
                 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+
                 Route::get('/admin_accounts', [AdminController::class, 'admin_accounts'])->name('admin_accounts');
                 Route::get('/admin_categories', [AdminController::class, 'admin_categories'])->name('admin_categories');
                 Route::get('/admin_extras', [AdminController::class, 'admin_extras'])->name('admin_extras');
                 Route::get('/admin_ingredients', [AdminController::class, 'admin_ingredients'])->name('admin_ingredients');
                 Route::get('/admin_products', [AdminController::class, 'admin_products'])->name('admin_products');
-                Route::get('/admin_orders', [AdminController::class, 'admin_orders'])->name('admin_orders');
                 Route::get('/admin_comments', [AdminController::class, 'admin_comments'])->name('admin_comments');
-                Route::get('/admin_links', [AdminController::class, 'admin_links'])->name('admin_links');
                 Route::get('/admin_navs', [AdminController::class, 'admin_navs'])->name('admin_navs');
+
+                Route::post('/admin_accounts_update', [AdminController::class, 'admin_accounts_update'])->name('admin_accounts_update');
+                Route::post('/admin_categories_update', [AdminController::class, 'admin_categories_update'])->name('admin_categories_update');
+                Route::post('/admin_extras_update', [AdminController::class, 'admin_extras_update'])->name('admin_extras_update');
+                Route::delete('/admin_extras_delete', [AdminController::class, 'admin_extras_delete'])->name('admin_extras_delete');
+                Route::post('/admin_ingredients_update', [AdminController::class, 'admin_ingredients_update'])->name('admin_ingredients_update');
+                Route::delete('/admin_ingredients_delete', [AdminController::class, 'admin_ingredients_delete'])->name('admin_ingredients_delete');
+                Route::post('/admin_products_update', [AdminController::class, 'admin_products_update'])->name('admin_products_update');
+                Route::delete('/admin_comments_delete', [AdminController::class, 'admin_comments_delete'])->name('admin_comments_delete');
+                Route::post('/admin_navs_update', [AdminController::class, 'admin_navs_update'])->name('admin_navs_update');
             });
         });
     });

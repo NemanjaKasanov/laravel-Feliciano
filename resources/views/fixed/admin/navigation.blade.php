@@ -21,25 +21,11 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin_extras') }}">Extras</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin_ingredients') }}">Ingredients</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin_products') }}">Products</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin_orders') }}">Orders</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin_comments') }}">Comments</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin_links') }}">Links</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin_navs') }}">Navigations</a></li>
                 </ul>
             </div>
         </li>
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="pages/apps/todo.html">--}}
-{{--                <i class="icon-align-right menu-icon"></i>--}}
-{{--                <span class="menu-title">Todo List</span>--}}
-{{--            </a>--}}
-{{--        </li>--}}
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="pages/documentation/documentation.html">--}}
-{{--                <i class="icon-paper menu-icon"></i>--}}
-{{--                <span class="menu-title">Documentation</span>--}}
-{{--            </a>--}}
-{{--        </li>--}}
     </ul>
 </nav>
 
