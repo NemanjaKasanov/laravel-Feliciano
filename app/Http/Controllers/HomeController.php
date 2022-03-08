@@ -25,4 +25,8 @@ class HomeController extends FirstController
     public function no_access(){
         return view('pages.no_access', $this->data);
     }
+
+    public function about_author(){
+        return view('pages.about_author', $this->data);
+    }
 }

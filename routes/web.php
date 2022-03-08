@@ -18,15 +18,16 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::middleware(['web'])->group(function(){
+Route::middleware(['web'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/about_author', [HomeController::class, 'about_author'])->name('aboutAuthor');
     Route::get('/dishes', [DishController::class, 'index'])->name('dishes');
     Route::get('/dish/{product}', [DishController::class, 'dish'])->name('dish');
     Route::post('/search', [DishController::class, 'search'])->name('search');
     Route::post('/get_likes_number', [DishController::class, 'getLikesNumber'])->name('getLikesNumber');
     Route::post('/get_comments', [DishController::class, 'getProductComments'])->name('getProductComments');
 
-    Route::middleware(['logged_in'])->group(function(){
+    Route::middleware(['logged_in'])->group(function () {
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::post('/getSizePrice', [DishController::class, 'getPrice'])->name('getSizePrice');
         Route::post('/add_to_cart', [OrderController::class, 'insertIntoCart'])->name('insertIntoCart');
@@ -40,7 +41,7 @@ Route::middleware(['web'])->group(function(){
         Route::post('/submit_order', [OrderController::class, 'submitOrder'])->name('submitOrder');
         Route::get('/order_submit_success', [OrderController::class, 'submitOrderSuccess'])->name('submitOrderSuccess');
 
-        Route::middleware(['employee'])->group(function(){
+        Route::middleware(['employee'])->group(function () {
             Route::get('/change_product/{product}', [DishController::class, 'changeProductForm'])->name('changeProduct.form');
             Route::post('/change_product', [DishController::class, 'changeProduct'])->name('changeProduct');
             Route::delete('/delete_product/{product}', [DishController::class, 'deleteProduct'])->name('deleteProduct');
@@ -51,7 +52,7 @@ Route::middleware(['web'])->group(function(){
             Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
             Route::post('shipOrRefuse', [OrderController::class, 'shipOrRefuseOrder'])->name('shipOrRefuse');
 
-            Route::middleware(['admin'])->group(function(){
+            Route::middleware(['admin'])->group(function () {
                 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 
                 Route::get('/admin_accounts', [AdminController::class, 'admin_accounts'])->name('admin_accounts');
@@ -75,7 +76,7 @@ Route::middleware(['web'])->group(function(){
         });
     });
 
-    Route::middleware(['logged_out'])->group(function(){
+    Route::middleware(['logged_out'])->group(function () {
         Route::get('/register_form', [AuthController::class, 'register_form'])->name('register.form');
         Route::post('/register', [AuthController::class, 'register'])->name('register');
         Route::get('/login_form', [AuthController::class, 'login_form'])->name('login.form');
