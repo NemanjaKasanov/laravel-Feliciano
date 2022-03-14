@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class CartExtra extends Model
 {
     use HasFactory;
-
 }

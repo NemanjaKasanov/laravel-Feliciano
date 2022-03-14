@@ -175,7 +175,7 @@ class DishController extends FirstController
             }
 
             // Insert Product Extras
-            if($validated['extras']){
+            if(isset($validated['extras'])){
                 foreach($validated['extras'] as $el){
                     ProductsExtra::insert([
                         'product' => $id,
@@ -222,7 +222,7 @@ class DishController extends FirstController
                 ]);
             }
 
-            if($validated['extras']){
+            if(isset($validated['extras'])){
                 foreach($validated['extras'] as $el){
                     ProductsExtra::insert([
                         'product' => $id,
@@ -236,6 +236,7 @@ class DishController extends FirstController
         catch(\Exception $e){
             return redirect()->route('error');
         }
+
     }
 
     public function addPrice(AddPriceRequest $request){

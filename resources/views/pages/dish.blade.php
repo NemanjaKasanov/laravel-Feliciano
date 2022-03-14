@@ -82,7 +82,7 @@
                                 <p class="h5"><a href="{{ route('login.form') }}">Log In</a> to Add to Order</p>
                             </div>
                         @endif
-                        @if(session()->get('user')->role > 0)
+                        @if(session()->has('user') && session()->get('user')->role > 0)
                             <div class="col-12 mt-5 border-top">
                                 <p class="h4 mt-5 mb-3">Add/Remove Size and Price:</p>
                                 <div class="col-12 pb-5">
@@ -135,7 +135,7 @@
 
                     <div class="col-lg-6 col-sm-12">
                         <div class="col-12">
-                            @if(session()->get('user')->role > 0)
+                            @if(session()->has('user') && session()->get('user')->role > 0)
                                 <form action="{{ route('deleteProduct', ['product' => $product->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

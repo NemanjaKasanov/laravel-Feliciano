@@ -32,7 +32,7 @@ $(document).ready(function(){
         });
 
         $.ajax({
-            'url': '/Feliciano/public/getSizePrice',
+            'url': '/laravel-Feliciano/public/getSizePrice',
             'type': 'POST',
             'dataType': 'json',
             'data': {
@@ -66,7 +66,7 @@ $(document).ready(function(){
         });
 
         $.ajax({
-            'url': '/Feliciano/public/add_to_cart',
+            'url': '/laravel-Feliciano/public/add_to_cart',
             'type': 'POST',
             'dataType': 'json',
             'data': {
@@ -97,7 +97,7 @@ $(document).ready(function(){
         });
 
         $.ajax({
-            'url': '/Feliciano/public/like_product',
+            'url': '/laravel-Feliciano/public/like_product',
             'type': 'POST',
             'dataType': 'json',
             'data': {
@@ -126,7 +126,7 @@ $(document).ready(function(){
         });
 
         $.ajax({
-            'url': '/Feliciano/public/comment_product',
+            'url': '/laravel-Feliciano/public/comment_product',
             'type': 'POST',
             'dataType': 'json',
             'data': {
@@ -157,7 +157,7 @@ function getProductComments(){
     });
 
     $.ajax({
-        'url': '/Feliciano/public/get_comments',
+        'url': '/laravel-Feliciano/public/get_comments',
         'type': 'POST',
         'dataType': 'json',
         'data': {
@@ -208,7 +208,7 @@ function getLikesNumber(){
     });
 
     $.ajax({
-        'url': '/Feliciano/public/get_likes_number',
+        'url': '/laravel-Feliciano/public/get_likes_number',
         'type': 'POST',
         'dataType': 'json',
         'data': {
@@ -234,7 +234,7 @@ function getItemsInCartNumber(){
     });
 
     $.ajax({
-        'url': '/Feliciano/public/get_cart_items_number',
+        'url': '/laravel-Feliciano/public/get_cart_items_number',
         'type': 'POST',
         'dataType': 'json',
         'data': {
@@ -259,7 +259,7 @@ function getDishes(category, search){
     });
 
     $.ajax({
-        'url': '/Feliciano/public/search',
+        'url': '/laravel-Feliciano/public/search',
         'type': 'POST',
         'dataType': 'json',
         'data': {
@@ -283,9 +283,9 @@ function showDishes(data){
         html += `
             <div class="col-md-4">
                 <div class="blog-entry">
-                    <a href="/Feliciano/public/dish/${el.id}" class="block-20" style="background-image: url('/Feliciano/public/assets/img/${el.image}')"></a>
+                    <a href="/laravel-Feliciano/public/dish/${el.id}" class="block-20" style="background-image: url('/laravel-Feliciano/public/assets/img/${el.image}')"></a>
                     <div class="text pt-3 pb-4 px-4">
-                        <h3 class="heading"><a href="/Feliciano/public/dish/${el.id}">${el.name}</a></h3>
+                        <h3 class="heading"><a href="/laravel-Feliciano/public/dish/${el.id}">${el.name}</a></h3>
                         <p>${el.description}</p>
                         <p>`;
 
@@ -298,7 +298,7 @@ function showDishes(data){
 
         html += `       </p>
                         <div class="col-12 d-flex">
-                            <p><a href="/Feliciano/public/dish/${el.id}" class="btn btn-primary">Add to order</a></p>
+                            <p><a href="/laravel-Feliciano/public/dish/${el.id}" class="btn btn-primary">Add to order</a></p>
                         </div>
                     </div>
                 </div>

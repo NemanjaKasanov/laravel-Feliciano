@@ -30,7 +30,7 @@
                             <p>My passion is creating applications and solving problems using programming languages and technologies I learned, and I strive to obtain more knowledge and master the skills I already have.</p>
                             <p>I am fluent in written and spoken English.</p>
                             <p>Currently working at EXTREMUM.</p>
-                            <a href="documentation.pdf">DOCUMENTATION</a>
+                            <a href="{{ asset('assets/documentation.pdf') }}" target="_blank">DOCUMENTATION</a>
                         </div>
                     </div>
                 </div>
